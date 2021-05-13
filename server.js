@@ -22,6 +22,11 @@ mongoose.connect(uri, {
 // 中间件
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Headers','content-type')
+  next()
+})
 
 // 路由
 app.use('/api', router)
