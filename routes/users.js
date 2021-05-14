@@ -52,6 +52,8 @@ router.post('/sign-up', async (req, res) => {
       code: -1,
       msg: '邮箱以及被注册过了'
     })
+
+    return
   }
   // 3、存储到数据库中
   const newUser = new UserModel({
