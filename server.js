@@ -4,6 +4,7 @@ const router = require('./routes/users')
 
 // 路由文件
 const usersRouter = require('./routes/users')
+const bannersRouter = require('./routes/banners')
 
 // 创建 express 服务
 const app = express()
@@ -20,6 +21,7 @@ mongoose.connect(uri, {
 })
 
 // 中间件
+app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use((req, res, next) => {
@@ -29,7 +31,7 @@ app.use((req, res, next) => {
 })
 
 // 路由
-app.use('/api', router)
+app.use('/api', [usersRouter, bannersRouter])
 
 
 app.listen(3000)

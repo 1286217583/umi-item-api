@@ -44,7 +44,6 @@ router.post('/sign-up', async (req, res) => {
     nickname,
     gender
   } = req.body
-  console.log(req.body)
   // 2、判断当前用户是否以及注册过了
   const user = await UserModel.findOne({ email })
   if (user) {
